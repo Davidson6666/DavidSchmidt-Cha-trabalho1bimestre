@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Definimos que a página vai usar a codificação de caracteres UTF-8 (que é a mais comum para nosso idioma). -->
+  <meta charset="UTF-8">
+  <!-- Isso faz a página se ajustar corretamente em telas pequenas, como em celulares. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Aqui estamos dando um nome para a página que aparece na aba do navegador. -->
+  <title>BubbleMix - Sua Loja de Chás</title>
+  <!-- Estamos carregando um arquivo de estilo CSS para deixar a página bonitinha. -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Estamos adicionando um ícone de carrinho e outras imagens legais usando um site que disponibiliza fontes (Font Awesome). -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <!-- A parte do topo da página, onde fica o título e o resumo do carrinho de compras. -->
+  <header> <!-- Início do cabeçalho da página -->
+  
+    <h1><i class="fas fa-mug-hot"></i> BubbleMix</h1> 
+    <!-- Título principal da página com um ícone de caneca de chá (ícone da Font Awesome) -->
+  
+    <p>Selecione seus chás e personalize!</p> 
+    <!-- Subtítulo com uma frase chamativa para o usuário -->
+  
+    <!-- Aqui é o resumo do carrinho, mostrando quantos itens tem no carrinho e o valor total. -->
+    <div id="cart-preview" style="margin-top: 10px;"> 
+      <!-- Bloco que mostra um resumo do carrinho, com ícone, quantidade e total -->
+  
+      <i class="fas fa-shopping-cart"></i> 
+      <!-- Ícone de carrinho de compras (da Font Awesome) -->
+  
+      Carrinho: <span id="cart-item-count">0</span> item(ns) –  
+      <!-- Mostra o número de itens no carrinho, começa com 0 -->
+  
+      Total: R$ <span id="cart-total-price">0,00</span>
+      <!-- Mostra o preço total dos itens no carrinho, começa em R$ 0,00 -->
+  
+    </div>
+  
+  </header> <!-- Fim do cabeçalho da página -->
+  
+
+ <!-- A parte que vai mostrar os itens do carrinho, caso o usuário tenha adicionado algo. -->
+<div id="cart-items-list" style="margin: 1rem; padding: 1rem; border: 1px solid #eee; border-radius: 5px;">
+  <!-- Div que agrupa tudo relacionado aos itens do carrinho.
+       Usa margens, bordas e arredondamento para melhorar o visual. -->
+
+  <h3>Carrinho:</h3>
+  <!-- Título da seção do carrinho -->
+
+  <!-- Lista onde os itens adicionados ao carrinho vão aparecer. -->
+  <ul id="cart-list"></ul>
+  <!-- Essa lista (ul) começa vazia. O JavaScript vai preenchê-la com os itens escolhidos. -->
+
+  <!-- Caso o carrinho esteja vazio, essa mensagem vai aparecer. -->
+  <p id="empty-cart-message" style="display:block;">O carrinho está vazio.</p>
+  <!-- Parágrafo com a mensagem "O carrinho está vazio" que aparece por padrão
+       e será escondido pelo JavaScript quando houver itens. -->
+
+  <!-- A parte que mostra o total do carrinho. -->
+  <div id="cart-side-summary">
+    <!-- Div separada para mostrar o valor total dos itens do carrinho -->
+
+    <p><strong>Total:</strong> R$ <span id="cart-list-total">0,00</span></p>
+    <!-- Mostra o total acumulado do carrinho, começa com R$ 0,00
+         O JavaScript atualiza esse valor conforme o usuário adiciona produtos -->
+
+  </div>
+</div>
+
+<main>
+  <!-- A seção principal da página onde os chás e ações do usuário acontecem -->
+
+  <section id="cha-options">
+    <!-- A seção que contém todas as opções de chás que o usuário pode escolher -->
+
+    <h2>Nossos Chás</h2>
+    <!-- Título da seção que lista os chás disponíveis -->
+
+    <!-- Cada item de chá tem suas informações, como nome, preço e quantidade. -->
+    <article class="cha-item" data-price="5.00">
+      <!-- Cada chá é representado por um 'article', com preço armazenado em 'data-price' -->
+      <h3>Chá Preto</h3>
+      <!-- Nome do chá -->
+
+      <p class="price">Preço: R$ 5,00</p>
+      <!-- Preço do chá -->
+
+      <img src="../pngs/cha-preto.png" alt="Chá Preto" width="100">
+      <!-- Imagem do chá. 'alt' é o texto alternativo caso a imagem não carregue -->
+
+      <div class="controls">
+        <label>Quantidade:</label>
+        <!-- Rótulo que indica que o usuário pode escolher a quantidade -->
+        <input type="number" min="0" value="0">
+        <!-- Campo para o usuário escolher a quantidade. O valor inicial é 0 e o mínimo é 0 -->
+      </div>
+
+      <div class="controls">
+        <label><i class="fas fa-circle"></i> Bolinhas?</label>
+        <!-- Rótulo para selecionar se o chá terá bolinhas (sabor) -->
+        <select>
+          <option value="">Sem bolinhas</option>
+          <option value="morango">Morango</option>
+          <option value="maracuja">Maracujá</option>
+          <option value="tapioca">Tapioca</option>
+        </select>
+        <!-- Menu suspenso para escolher o sabor das bolinhas. -->
+      </div>
+    </article>
+
+    <!-- Mais opções de chá (verde, hibisco, jasmim), com a mesma estrutura. -->
+    <article class="cha-item" data-price="6.50">
+      <!-- Outro chá, com preço diferente -->
+      <h3>Chá Verde</h3>
+      <p class="price">Preço: R$ 6,50</p>
+      <img src="../pngs/cha-verde.jpg" alt="Chá Verde" width="100">
+      <div class="controls">
+        <label>Quantidade:</label>
+        <input type="number" min="0" value="0">
+      </div>
+      <div class="controls">
+        <label><i class="fas fa-circle"></i> Bolinhas?</label>
+        <select>
+          <option value="">Sem bolinhas</option>
+          <option value="morango">Morango</option>
+          <option value="maracuja">Maracujá</option>
+          <option value="tapioca">Tapioca</option>
+        </select>
+      </div>
+    </article>
+
+    <article class="cha-item" data-price="7.00">
+      <!-- Chá de Hibisco -->
+      <h3>Chá de Hibisco</h3>
+      <p class="price">Preço: R$ 7,00</p>
+      <img src="../pngs/cha-hibi.png" alt="Chá de Hibisco" width="100">
+      <div class="controls">
+        <label>Quantidade:</label>
+        <input type="number" min="0" value="0">
+      </div>
+      <div class="controls">
+        <label><i class="fas fa-circle"></i> Bolinhas?</label>
+        <select>
+          <option value="">Sem bolinhas</option>
+          <option value="morango">Morango</option>
+          <option value="maracuja">Maracujá</option>
+          <option value="tapioca">Tapioca</option>
+        </select>
+      </div>
+    </article>
+
+    <article class="cha-item" data-price="8.25">
+      <!-- Chá de Jasmim -->
+      <h3>Chá de Jasmim</h3>
+      <p class="price">Preço: R$ 8,25</p>
+      <img src="../pngs/aaaaa.png" alt="Chá de Jasmim" width="100">
+      <div class="controls">
+        <label>Quantidade:</label>
+        <input type="number" min="0" value="0">
+      </div>
+      <div class="controls">
+        <label><i class="fas fa-circle"></i> Bolinhas?</label>
+        <select>
+          <option value="">Sem bolinhas</option>
+          <option value="morango">Morango</option>
+          <option value="maracuja">Maracujá</option>
+          <option value="tapioca">Tapioca</option>
+        </select>
+      </div>
+    </article>
+  </section>
+
+  <section id="actions">
+    <!-- Seção com os botões de ação para o carrinho -->
+    <button id="add-to-cart-btn" class="action-button">
+      <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+    </button>
+    <!-- Botão para adicionar o item ao carrinho -->
+
+    <button id="buy-now-btn" class="action-button">
+      <i class="fas fa-bolt"></i> Comprar Agora
+    </button>
+    <!-- Botão para comprar o item imediatamente -->
+  </section>
+
+  <!-- Aqui aparece uma mensagem quando um item é adicionado ao carrinho. -->
+  <div id="toast" class="toast">Item adicionado!</div>
+  <!-- Esta mensagem aparece temporariamente quando um item é adicionado ao carrinho -->
+
+</main>
+
+<!-- Rodapé da página, mostrando os direitos autorais. -->
+<footer>
+  <p>&copy; 2025 BubbleMix - Todos os direitos reservados.</p>
+  <!-- Texto de direitos autorais da página -->
+</footer>
+
+
+  <!-- Este é o arquivo de JavaScript que vai controlar a interação com a página. -->
+  <script src="../js/script.js"></script>
+</body>
+</html>
